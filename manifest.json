@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Image Text Extractor",
+  "version": "1.0.0",
+  "description": "Extract and copy text from images with a right-click",
+  
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "clipboardWrite",
+    "storage"
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Image Text Extractor"
+  },
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["libs/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
