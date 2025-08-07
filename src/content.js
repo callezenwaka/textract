@@ -23,31 +23,61 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 // Main function to extract text from image
 async function extractTextFromImage(imageUrl) {
   try {
-    // Step 1: Get image data
+    // Step 1: Get user settings
+    const settings = await getUserSettings();
+    
+    // Step 2: Get image data
     const imageData = await getImageData(imageUrl);
     
-    // Step 2: Send to background script for OCR processing
+    // Step 3: Send to background script for OCR processing
     const ocrResult = await chrome.runtime.sendMessage({
       action: "processImage",
-      imageData: imageData
+      imageData: imageData,
+      settings: settings
     });
     
     if (!ocrResult.success) {
       throw new Error(ocrResult.error);
     }
     
-    // Step 3: Copy to clipboard
+    // Step 4: Copy to clipboard
     await copyToClipboard(ocrResult.text);
     
-    // Step 4: Show user feedback
-    showNotification(`Text copied! (${ocrResult.text.length} characters)`);
+    // Step 5: Show user feedback (if enabled)
+    if (settings.showNotifications) {
+      showNotification(`Text copied! (${ocrResult.text.length} characters)`);
+    }
     
     return { success: true, text: ocrResult.text };
     
   } catch (error) {
     console.error('Text extraction failed:', error);
-    showNotification('Failed to extract text from image', 'error');
+    
+    // Get settings to check if notifications are enabled
+    const settings = await getUserSettings().catch(() => ({ showNotifications: true }));
+    if (settings.showNotifications) {
+      showNotification('Failed to extract text from image', 'error');
+    }
+    
     return { success: false, error: error.message };
+  }
+}
+
+// Get user settings from storage
+async function getUserSettings() {
+  try {
+    return await chrome.storage.sync.get({
+      showNotifications: true,
+      autoEnhance: true,
+      multiLanguage: false
+    });
+  } catch (error) {
+    console.error('Failed to get settings:', error);
+    return {
+      showNotifications: true,
+      autoEnhance: true,
+      multiLanguage: false
+    };
   }
 }
 

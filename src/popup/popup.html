@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Text Extractor</title>
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>🪄 Image Text Extractor</h1>
+  
+  <div class="instruction">
+    <strong>How to use:</strong><br>
+    Right-click any image and select "Copy text from image"
+  </div>
+  
+  <div class="stats">
+    <span>Images processed: <strong id="processedCount">0</strong></span>
+    <span>Success rate: <strong id="successRate">0%</strong></span>
+  </div>
+  
+      <label for="showNotificationsLabel" class="no-margin">
+        <span>Show notifications</span>
+      </label>
+    <div class="setting-item">
+      <label for="showNotificationsLabel" class="no-margin">
+        <span>Show notifications</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="showNotificationsLabel" checked title="Show notifications">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="setting-item">
+      <label for="autoEnhance" class="no-margin">
+        <span>Auto-enhance images</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="autoEnhance" checked title="Auto-enhance images">
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="setting-item">
+      <label for="multiLanguage" class="no-margin">
+        <span>Multi-language detection</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="multiLanguage" title="Enable multi-language detection">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  
+  <div class="version">
+    Version 1.0.0
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
