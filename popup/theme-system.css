@@ -1,0 +1,160 @@
+/* Theme System for Extractext Extension */
+
+/* CSS Custom Properties for theming */
+:root {
+    /* Light theme colors */
+    --banner-bg: linear-gradient(135deg, #4285f4, #34a853);
+    --banner-text: white;
+    --banner-border: transparent;
+    
+    --toolbar-bg: #333;
+    --toolbar-text: white;
+    --toolbar-border: transparent;
+    --toolbar-button-bg: rgba(255, 255, 255, 0.1);
+    --toolbar-button-border: rgba(255, 255, 255, 0.2);
+    --toolbar-button-hover: rgba(255, 255, 255, 0.2);
+    
+    --word-bg: rgba(66, 133, 244, 0.1);
+    --word-text: #333;
+    --word-border: transparent;
+    --word-hover-bg: rgba(66, 133, 244, 0.2);
+    --word-hover-border: rgba(66, 133, 244, 0.3);
+    --word-selected-bg: rgba(66, 133, 244, 0.6);
+    --word-selected-text: white;
+    --word-selected-border: #4285f4;
+    
+    --notification-success: #4CAF50;
+    --notification-error: #f44336;
+    --notification-info: #2196F3;
+    --notification-text: white;
+  }
+  
+  /* Dark theme overrides */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --banner-bg: linear-gradient(135deg, #1a73e8, #0f7b0f);
+      --banner-text: #e8eaed;
+      --banner-border: rgba(255, 255, 255, 0.1);
+      
+      --toolbar-bg: #2d2d2d;
+      --toolbar-text: #e8eaed;
+      --toolbar-border: #444;
+      --toolbar-button-bg: rgba(255, 255, 255, 0.08);
+      --toolbar-button-border: rgba(255, 255, 255, 0.12);
+      --toolbar-button-hover: rgba(255, 255, 255, 0.16);
+      
+      --word-bg: rgba(138, 180, 248, 0.15);
+      --word-text: #e8eaed;
+      --word-border: rgba(138, 180, 248, 0.2);
+      --word-hover-bg: rgba(138, 180, 248, 0.25);
+      --word-hover-border: rgba(138, 180, 248, 0.4);
+      --word-selected-bg: rgba(138, 180, 248, 0.5);
+      --word-selected-text: #202124;
+      --word-selected-border: #8ab4f8;
+      
+      --notification-success: #0d7377;
+      --notification-error: #d93025;
+      --notification-info: #1a73e8;
+      --notification-text: #e8eaed;
+    }
+  }
+  
+  /* Apply theme variables */
+  .ocr-banner {
+    background: var(--banner-bg);
+    color: var(--banner-text);
+    border: 1px solid var(--banner-border);
+  }
+  
+  .text-selection-toolbar {
+    background: var(--toolbar-bg);
+    color: var(--toolbar-text);
+    border: 1px solid var(--toolbar-border);
+  }
+  
+  .text-selection-toolbar button {
+    background: var(--toolbar-button-bg);
+    border: 1px solid var(--toolbar-button-border);
+    color: var(--toolbar-text);
+  }
+  
+  .text-selection-toolbar button:hover {
+    background: var(--toolbar-button-hover);
+  }
+  
+  .text-selection-toolbar button.primary {
+    background: #4285f4;
+    border-color: #4285f4;
+    color: white;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .text-selection-toolbar button.primary {
+      background: #1a73e8;
+      border-color: #1a73e8;
+    }
+  }
+  
+  .selectable-word {
+    background: var(--word-bg);
+    color: var(--word-text);
+    border: 1px solid var(--word-border);
+  }
+  
+  .selectable-word:hover {
+    background: var(--word-hover-bg);
+    border-color: var(--word-hover-border);
+  }
+  
+  .selectable-word.selected {
+    background: var(--word-selected-bg);
+    color: var(--word-selected-text);
+    border-color: var(--word-selected-border);
+  }
+  
+  /* Dynamic notification theming */
+  .notification {
+    color: var(--notification-text);
+  }
+  
+  .notification.success {
+    background: var(--notification-success);
+  }
+  
+  .notification.error {
+    background: var(--notification-error);
+  }
+  
+  .notification.info {
+    background: var(--notification-info);
+  }
+  
+  /* Popup theme support */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: #202124;
+      color: #e8eaed;
+    }
+    
+    .instruction {
+      background: #2d2d2d;
+      color: #bdc1c6;
+    }
+    
+    .stats {
+      background: #1e3a5f;
+      color: #e8eaed;
+    }
+    
+    .settings {
+      border-top-color: #444;
+    }
+    
+    .slider {
+      background-color: #555;
+    }
+    
+    input:checked + .slider {
+      background-color: #1a73e8;
+    }
+  }

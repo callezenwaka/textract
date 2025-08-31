@@ -2,7 +2,10 @@
   "manifest_version": 3,
   "name": "Image Text Extractor",
   "version": "1.0.0",
-  "description": "Extract and copy text from images with a right-click",
+  "short_name": "Text Extractor",
+  "description": "Extract and copy text from images using OCR. Select specific text or copy all with one click.",
+  "author": "Barestripe Technologies",
+  "homepage_url": "https://barestripe.com/",
   
   "permissions": [
     "contextMenus",
@@ -12,25 +15,30 @@
   ],
   
   "action": {
-    "default_popup": "src/popup/popup.html",
+    "default_popup": "popup/popup.html",
     "default_title": "Image Text Extractor"
   },
   
   "background": {
-    "service_worker": "src/background.js"
+    "service_worker": "background.js"
   },
   
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["src/content.js"],
+      "js": ["content.js"],
       "run_at": "document_idle"
     }
   ],
   
   "web_accessible_resources": [
     {
-      "resources": ["assets/libs/*", "src/popup/banner.css"],
+      "resources": [
+        "assets/libs/*", 
+        "popup/banner.css", 
+        "popup/text-selection.css",
+        "popup/theme-system.css"
+      ],
       "matches": ["<all_urls>"]
     }
   ],
