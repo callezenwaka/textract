@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Text Extractor",
+  "name": "Image Text Extractor",
   "version": "1.0.0",
   "description": "Extract and copy text from images with a right-click",
   
@@ -30,7 +30,7 @@
   
   "web_accessible_resources": [
     {
-      "resources": ["assets/libs/*"],
+      "resources": ["assets/libs/*", "src/popup/banner.css"],
       "matches": ["<all_urls>"]
     }
   ],

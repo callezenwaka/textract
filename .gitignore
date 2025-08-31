@@ -1,1 +1,20 @@
+# IDEs  
+.vscode
 .DS_Store
+
+# Python
+.venv
+.env
+
+# bin
+bin
+build
+dist
+
+# data
+data
+
+# logs
+logs
+
+# vscode

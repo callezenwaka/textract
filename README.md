@@ -73,6 +73,11 @@ text-extractor-extension/
 4. Wait a moment (first run takes longer as Tesseract initializes)
 5. Paste the extracted text anywhere!
 
+## Run the simple tests
+```js
+node tests/unit-tests.js
+```
+
 ## Features Now Working:
 - Real OCR with Tesseract.js
 - Image preprocessing for better accuracy
