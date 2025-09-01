@@ -8,54 +8,76 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h1>🪄 Image Text Extractor</h1>
-  
-  <div class="instruction">
-    <strong>How to use:</strong><br>
-    Right-click any image and select "Copy text from image"
+  <!-- Loading indicator -->
+  <div id="loading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p class="loading-text">Loading...</p>
   </div>
-  
-  <div class="stats">
-    <span>Images processed: <strong id="processedCount">0</strong></span>
-    <span>Success rate: <strong id="successRate">0%</strong></span>
-  </div>
-  
-  <div class="settings">
-    <div class="setting-item">
-      <label for="showNotifications" class="no-margin">
-        <span>Show notifications</span>
-      </label>
-      <label class="toggle">
-        <input type="checkbox" id="showNotifications" checked title="Show notifications">
-        <span class="slider"></span>
-      </label>
+
+  <!-- Main content -->
+  <div id="main-content">
+    <h1>Image Text Extractor</h1>
+    
+    <div class="instruction">
+      <strong>How to use:</strong><br>
+      Right-click any image and select "Copy text from image"
     </div>
     
-    <div class="setting-item">
-      <label for="autoEnhance" class="no-margin">
-        <span>Auto-enhance images</span>
-      </label>
-      <label class="toggle">
-        <input type="checkbox" id="autoEnhance" checked title="Auto-enhance images">
-        <span class="slider"></span>
-      </label>
+    <div class="stats">
+      <span>Images processed: <strong id="processedCount">0</strong></span>
+      <span>Success rate: <strong id="successRate">0%</strong></span>
     </div>
     
-    <div class="setting-item">
-      <label for="multiLanguage" class="no-margin">
-        <span>Multi-language detection</span>
-      </label>
-      <label class="toggle">
-        <input type="checkbox" id="multiLanguage" title="Enable multi-language detection">
-        <span class="slider"></span>
-      </label>
+    <div class="settings">
+      <div class="setting-item">
+        <label for="showNotifications" class="setting-label">
+          <span>Show notifications</span>
+          <small class="setting-description">Get notified when text is copied</small>
+        </label>
+        <label class="toggle" aria-label="Toggle notifications">
+          <input type="checkbox" id="showNotifications" checked title="Show notifications when text is extracted" aria-describedby="notif-desc">
+          <span class="slider" role="switch" aria-checked="true" title="Toggle notifications"></span>
+        </label>
+      </div>
+      
+      <div class="setting-item">
+        <label for="autoEnhance" class="setting-label">
+          <span>Auto-enhance images</span>
+          <small class="setting-description">Improve image quality before OCR</small>
+        </label>
+        <label class="toggle" aria-label="Toggle auto-enhance">
+          <input type="checkbox" id="autoEnhance" checked title="Automatically enhance images for better text recognition" aria-describedby="enhance-desc">
+          <span class="slider" role="switch" aria-checked="true" title="Toggle auto-enhance"></span>
+        </label>
+      </div>
+      
+      <div class="setting-item">
+        <label for="multiLanguage" class="setting-label">
+          <span>Multi-language detection</span>
+          <small class="setting-description">Detect text in multiple languages</small>
+        </label>
+        <label class="toggle" aria-label="Toggle multi-language detection">
+          <input type="checkbox" id="multiLanguage" title="Enable detection of text in multiple languages" aria-describedby="lang-desc">
+          <span class="slider" role="switch" aria-checked="false" title="Toggle multi-language detection"></span>
+        </label>
+      </div>
+    </div>
+    <div class="version">
+      Version 1.0.0
+      <br>
+      <small class="author-credit">
+        <a href="https://barestripe.com" target="_blank" rel="noopener">Barestripe Technologies</a>
+      </small>
     </div>
   </div>
-  
-  <div class="version">
-    Version 1.0.0
+
+  <!-- Hidden descriptions for accessibility -->
+  <div class="sr-only">
+    <div id="notif-desc">Displays browser notifications when text extraction completes</div>
+    <div id="enhance-desc">Automatically adjusts contrast and brightness for better OCR results</div>
+    <div id="lang-desc">Enables recognition of text in languages other than English</div>
   </div>
-  
+
   <script src="popup.js"></script>
 </body>
 </html>

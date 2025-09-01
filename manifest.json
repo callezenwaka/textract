@@ -11,7 +11,9 @@
     "contextMenus",
     "activeTab",
     "clipboardWrite",
-    "storage"
+    "storage",
+    "notifications",
+    "scripting"
   ],
   
   "action": {
@@ -34,7 +36,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "assets/libs/*", 
+        "assets/libs/tesseract.min.js",
         "popup/banner.css", 
         "popup/text-selection.css",
         "popup/theme-system.css"
@@ -42,6 +44,11 @@
       "matches": ["<all_urls>"]
     }
   ],
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';",
+    "content_scripts": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self';"
+  },
   
   "icons": {
     "16": "assets/icons/icon16.png",
